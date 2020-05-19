@@ -78,7 +78,7 @@ read it before opening a new issue about your will.")
 
 ;; Assigment form: VARIABLE COLOR [256-COLOR [TTY-COLOR]]
 (let ((colors '(;; Upstream theme color
-                (dracula-bg      "#282a36" "unspecified-bg" "unspecified-bg") ; official background
+                (dracula-bg      "#202020" "unspecified-bg" "unspecified-bg")
                 (dracula-fg      "#f8f8f2" "#ffffff" "brightwhite") ; official foreground
                 (dracula-current "#44475a" "#303030" "brightblack") ; official current-line/selection
                 (dracula-comment "#6272a4" "#5f5faf" "blue")        ; official comment
@@ -90,9 +90,9 @@ read it before opening a new issue about your will.")
                 (dracula-red     "#ff5555" "#ff8787" "red")         ; official red
                 (dracula-yellow  "#f1fa8c" "#ffff87" "yellow")      ; official yellow
                 ;; Other colors
-                (bg2             "#373844" "#121212" "brightblack")
-                (bg3             "#464752" "#262626" "brightblack")
-                (bg4             "#565761" "#444444" "brightblack")
+                (bg2             "#272834" "#121212" "brightblack")
+                (bg3             "#363742" "#262626" "brightblack")
+                (bg4             "#464751" "#444444" "brightblack")
                 (fg2             "#e2e2dc" "#e4e4e4" "brightwhite")
                 (fg3             "#ccccc7" "#c6c6c6" "white")
                 (fg4             "#b6b6b2" "#b2b2b2" "white")
@@ -140,8 +140,7 @@ read it before opening a new issue about your will.")
                (font-lock-regexp-grouping-construct :foreground ,dracula-purple)
                (font-lock-string-face :foreground ,dracula-yellow)
                (font-lock-type-face :foreground ,dracula-purple)
-               (font-lock-variable-name-face :foreground ,dracula-fg
-                                             :weight bold)
+               (font-lock-variable-name-face :foreground ,dracula-purple)
                (font-lock-warning-face :foreground ,dracula-orange :background ,bg2)
                ;; auto-complete
                (ac-completion-face :underline t :foreground ,dracula-pink)
@@ -457,17 +456,17 @@ read it before opening a new issue about your will.")
                (message-mml :foreground ,dracula-green :weight normal)
                (message-header-xheader :foreground ,dracula-cyan :weight normal)
                ;; mode-line
-               (mode-line :background ,dracula-current
-                          :box ,dracula-current :inverse-video nil
+               (mode-line :background ,dracula-purple
+                          :box ,dracula-purple :inverse-video nil
                           ,@(if dracula-alternate-mode-line-and-minibuffer
                                 (list :foreground fg3)
-                              (list :foreground "unspecified-fg")))
+                              (list :foreground dracula-bg)))
                (mode-line-inactive
                 :inverse-video nil
                 ,@(if dracula-alternate-mode-line-and-minibuffer
                       (list :foreground dracula-comment :background dracula-bg
                             :box dracula-bg)
-                    (list :foreground dracula-fg :background bg2 :box bg2)))
+                    (list :foreground fg4 :background bg2 :box bg2)))
                ;; mu4e
                (mu4e-unread-face :foreground ,dracula-pink :weight normal)
                (mu4e-view-url-number-face :foreground ,dracula-purple)
@@ -632,6 +631,13 @@ read it before opening a new issue about your will.")
                                       :box (:line-width 2 :color ,bg2 :style nil))
                (tab-line-tab-current :inherit tab-line-tab)
                (tab-line-close-highlight :foreground ,dracula-red)
+               ;; telephone-line
+               (telephone-line-accent-active :foreground ,dracula-bg :background "#8d63c9")
+               (telephone-line-accent-inactive :foreground ,fg4 :background ,dracula-bg)
+               (telephone-line-projectile :foreground ,dracula-bg)
+               (telephone-line-unimportant :foreground ,bg4)
+               ;; (telephone-line-error :foreground ,dracula-fg)
+               ;; (telephone-line-warning :foreground ,dracula-fg)
                ;; term
                (term :foreground ,dracula-fg :background ,dracula-bg)
                (term-color-black :foreground ,dracula-bg :background ,dracula-bg)
